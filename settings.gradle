@@ -1,0 +1,4 @@
+include 'example-web'
+include 'example-model'
+include 'example-persistence'
+include 'example-service'
