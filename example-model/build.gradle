@@ -1,0 +1,50 @@
+sourceSets {
+    generated {
+        java {
+            srcDirs = ['src/main/generated']
+        }
+    }
+}
+
+configurations {
+    querydslapt
+}
+
+dependencies {
+    compile("org.springframework:spring-orm:$springVersion") {
+        exclude module: 'commons-logging'
+    }
+    compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+    querydslapt "com.mysema.querydsl:querydsl-apt:$querydslVersion"
+}
+
+task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.querydslapt
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+}
+
+compileJava {
+    dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+
+compileGeneratedJava {
+    dependsOn generateQueryDSL
+    options.warnings = false
+    classpath += sourceSets.main.runtimeClasspath
+}
+
+clean {
+    delete sourceSets.generated.java.srcDirs
+}
+
+idea {
+    module {
+        sourceDirs += file('src/main/generated')
+    }
+}

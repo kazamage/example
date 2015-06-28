@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/example.iml" filepath="$PROJECT_DIR$/.idea/example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example-model/example-model.iml" filepath="$PROJECT_DIR$/example-model/example-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example-persistence/example-persistence.iml" filepath="$PROJECT_DIR$/example-persistence/example-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example-service/example-service.iml" filepath="$PROJECT_DIR$/example-service/example-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example-web/example-web.iml" filepath="$PROJECT_DIR$/example-web/example-web.iml" />
+    </modules>
+  </component>
+</project>

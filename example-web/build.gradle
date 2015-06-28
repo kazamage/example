@@ -1,0 +1,16 @@
+apply plugin: 'war'
+
+dependencies {
+    compile project(':example-model')
+    compile project(':example-service')
+    compile("org.springframework:spring-webmvc:$springVersion") {
+        exclude module: 'commons-logging'
+    }
+    compile("org.springframework.security:spring-security-web:$springSecurityVersion") {
+        exclude module: 'commons-logging'
+    }
+    compile("org.springframework.security:spring-security-config:$springSecurityVersion") {
+        exclude module: 'commons-logging'
+    }
+    provided "javax.servlet:javax.servlet-api:$servletApiVersion"
+}

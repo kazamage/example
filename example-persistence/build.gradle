@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':example-model')
+    compile("org.springframework:spring-orm:$springVersion") {
+        exclude module: 'commons-logging'
+    }
+}
